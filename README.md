@@ -26,14 +26,14 @@ $ git clone git://github.com/svn2github/gyp.git tools/gyp tools/gyp
 
 Second, run setup.py:
 
-**Linux and Mac OSX:**
+**Linux and Mac OSX**
 
 ```
 $ cd tools/gyp
 $ sudo python setup.py install
 ```
 
-**Windows:**
+**Windows**
 
 ```
 $ python --version
@@ -62,7 +62,7 @@ $ xcodebuild -project build/trivial.xcodeproj
 * Python (version 2.x)
 * Command prompt or MinGW + MSYS
 
-#### 1. Generate project files:
+#### 1. Generate project files
 
 Generate visual studio project files: 
 
@@ -70,7 +70,7 @@ Generate visual studio project files:
 $ python tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2012
 ```
 
-#### 2. Build:
+#### 2. Build
 
 If you use the command-prompt:
 

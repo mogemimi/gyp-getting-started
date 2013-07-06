@@ -7,7 +7,6 @@ class Entity
 public:
 	char const* GetName() const;
 	void SetName(char const* name);
-	
 private:
 	std::string name;
 };
