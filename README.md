@@ -51,7 +51,14 @@ $ python setup.py install
 #### Generate project and build:
 
 ```
-$ gyp build/trivial.gyp --depth=. -f xcode
+$ gyp build/trivial.gyp --depth=. -f xcode -D target_arch=ia32
+$ gyp build/trivial.gyp --depth=. -f xcode -D target_arch=x64
+```
+
+Build(Release/Debug):
+
+```
+$ xcodebuild -project build/trivial.xcodeproj -configuration Release
 $ xcodebuild -project build/trivial.xcodeproj
 ```
 
@@ -68,7 +75,12 @@ $ xcodebuild -project build/trivial.xcodeproj
 Generate visual studio project files: 
 
 ```
-$ python tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2012
+$ python tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2012 -a target_arch=ia32
+```
+
+Target architecture x64:
+```
+$ python tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2012 -a target_arch=x64
 ```
 
 #### 2. Build

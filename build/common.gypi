@@ -1,6 +1,25 @@
 {
+  'variables': {
+    'target_arch%': '<(target_arch)',
+  },
   'target_defaults': {
     'default_configuration': 'Release',
+	'conditions': [
+      ['target_arch == "arm"', {
+        # arm
+	  }], # target_archs == "arm"
+      ['target_arch == "ia32"', {
+        # ia32
+	  }], # target_archs == "ia32"
+      ['target_arch == "mipsel"', {
+        # mipsel
+	  }], # target_archs == "mipsel"
+      ['target_arch == "x64"', {
+        'xcode_settings': {
+          'ARCHS': ['x86_64'],
+		},
+	  }], # target_archs == "x64"
+    ],
     'configurations': {
       'Debug': {
         'defines':[

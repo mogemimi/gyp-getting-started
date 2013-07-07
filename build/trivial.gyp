@@ -1,4 +1,4 @@
-﻿{
+{
   'includes': ['common.gypi'],
   'make_global_settings': [
     ['CXX','/usr/bin/clang++'],
@@ -15,8 +15,6 @@
       }], # OS == "win"
       ['OS == "mac"', {
         'xcode_settings': {
-          'OTHER_CPLUSPLUSFLAGS': ['-std=c++11','-stdlib=libc++'],
-          'OTHER_LDFLAGS': ['-stdlib=libc++'],
           'GCC_VERSION': 'com.apple.compilers.llvm.clang.1_0',
           'CLANG_CXX_LANGUAGE_STANDARD': 'c++0x',
         },
@@ -34,6 +32,13 @@
       'sources': [
         '../src/Entity.cpp',
       ],
+      'conditions': [
+        ['OS == "mac"', {
+          'xcode_settings': {
+            'OTHER_CPLUSPLUSFLAGS': ['-std=c++11','-stdlib=libc++'],
+          },
+        }], # OS == "mac"
+      ],
     },
     {
       'target_name': 'trivial_test',
@@ -47,6 +52,14 @@
       ],
       'sources': [
         '../test/EntityTest.cpp',
+      ],
+      'conditions': [
+        ['OS == "mac"', {
+          'xcode_settings': {
+            'OTHER_CPLUSPLUSFLAGS': ['-std=c++11','-stdlib=libc++'],
+            'OTHER_LDFLAGS': ['-stdlib=libc++'],
+          },
+        }], # OS == "mac"
       ],
     },
   ]
