@@ -8,7 +8,7 @@ For more information, see
 ## Getting the code
 
 ```
-$ git clone git@github.com:enginetrouble/gyp-getting-started.git
+$ git clone git://github.com/enginetrouble/gyp-getting-started.git
 ```
 
 ## How to build

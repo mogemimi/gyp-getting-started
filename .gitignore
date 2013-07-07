@@ -15,5 +15,6 @@
 /out/
 /build/Debug
 /build/Release
+/build/build
 /tools/gyp
 /tools/python
