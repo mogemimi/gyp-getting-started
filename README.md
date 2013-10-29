@@ -15,29 +15,35 @@ $ git clone git://github.com/enginetrouble/gyp-getting-started.git
 
 ### Prerequisites
 
-First , install GYP from https://code.google.com/p/gyp/.  
+First, install GYP from https://chromium.googlesource.com/external/.  
+Make sure git is installed.
+From the root of your engine directory, run:  
+```
+$ git clone https://chromium.googlesource.com/external/gyp.git tools/gyp
+```
+
+or
+
 ```
 $ svn --version
 $ svn co http://gyp.googlecode.com/svn/trunk tools/gyp tools/gyp
 ```  
-or  
-```
-$ git clone git://github.com/svn2github/gyp.git tools/gyp tools/gyp
-```
 
 Second, run setup.py:
 
 **Linux and Mac OSX**
 
+To install globally with gyp:
+
 ```
 $ cd tools/gyp
-$ sudo python setup.py install
+$ [sudo] python setup.py install
 ```
 
 **Windows**
 
 ```
-$ python --version
+$ cd tools/gyp
 $ python setup.py install
 ```
 
@@ -58,8 +64,13 @@ $ gyp build/trivial.gyp --depth=. -f xcode -D target_arch=x64
 #### 2. Build (Release/Debug)
 
 ```
-$ xcodebuild -project build/trivial.xcodeproj -configuration Release
 $ xcodebuild -project build/trivial.xcodeproj
+```
+
+To build in release mode, use -configuration option:
+
+```
+$ xcodebuild -project build/trivial.xcodeproj -configuration Release
 ```
 
 ### Building under MSBuild (Visual Studio 2012)
@@ -79,6 +90,7 @@ $ python tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2012 
 ```
 
 Target architecture x64:
+
 ```
 $ python tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2012 -D target_arch=x64
 ```
