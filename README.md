@@ -73,6 +73,13 @@ To build in release mode, use -configuration option:
 $ xcodebuild -project build/trivial.xcodeproj -configuration Release
 ```
 
+#### 3. Running test
+
+```
+$ build/build/Release/TrivialTest 
+Hello, GYP
+```
+
 ### Building under MSBuild (Visual Studio 2012)
 
 #### Prerequisites
