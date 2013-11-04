@@ -7,24 +7,22 @@
 	'conditions': [
       ['target_arch == "arm"', {
         # arm
-	  }], # target_archs == "arm"
+      }], # target_archs == "arm"
       ['target_arch == "ia32"', {
         # ia32
-	  }], # target_archs == "ia32"
+      }], # target_archs == "ia32"
       ['target_arch == "mipsel"', {
         # mipsel
-	  }], # target_archs == "mipsel"
+      }], # target_archs == "mipsel"
       ['target_arch == "x64"', {
         'xcode_settings': {
           'ARCHS': ['x86_64'],
-		},
-	  }], # target_archs == "x64"
+        },
+      }], # target_archs == "x64"
     ],
     'configurations': {
       'Debug': {
-        'defines':[
-          'DEBUG'
-        ],
+        'defines':['DEBUG=1'],
         'cflags': ['-g', '-O0'],
         'msvs_settings': {
           'VCCLCompilerTool': {
