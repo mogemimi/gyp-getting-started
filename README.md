@@ -2,7 +2,7 @@ gyp-getting-started
 ===================
 
 For more information, see  
-[http://enginetrouble.net/blog/getting-started-with-gyp/](http://enginetrouble.net/blog/getting-started-with-gyp/)  
+[http://enginetrouble.net/2013/07/getting-started-with-gyp.html](http://enginetrouble.net/2013/07/getting-started-with-gyp.html)  
 [http://enginetrouble.net/](http://enginetrouble.net/)  
 
 ## Getting the code
