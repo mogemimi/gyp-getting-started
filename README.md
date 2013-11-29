@@ -2,8 +2,9 @@ gyp-getting-started
 ===================
 
 For more information, see  
-[http://enginetrouble.net/2013/07/getting-started-with-gyp.html](http://enginetrouble.net/2013/07/getting-started-with-gyp.html)  
-[http://enginetrouble.net/](http://enginetrouble.net/)  
+
+* [http://enginetrouble.net/2013/07/getting-started-with-gyp.html](http://enginetrouble.net/2013/07/getting-started-with-gyp.html)  
+* [http://enginetrouble.net/](http://enginetrouble.net/)  
 
 ## Getting the code
 
@@ -14,6 +15,11 @@ $ git clone git://github.com/enginetrouble/gyp-getting-started.git
 ## How to build
 
 ### Prerequisites
+
+* Python (version 2.x)
+* GYP
+
+### Prerequisite: Installing GYP
 
 First, install GYP from https://chromium.googlesource.com/external/.  
 Make sure git is installed.
@@ -49,11 +55,6 @@ $ python setup.py install
 
 ### Building under Xcode (Apple LLVM Clang++)
 
-#### Prerequisites
-
-* GYP
-* Python (version 2.x)
-
 #### 1. Generate project
 
 ```
@@ -81,12 +82,6 @@ Hello, GYP
 ```
 
 ### Building under MSBuild (Visual Studio 2012)
-
-#### Prerequisites
-
-* GYP
-* Python (version 2.x)
-* Command prompt or MinGW + MSYS
 
 #### 1. Generate project files
 
