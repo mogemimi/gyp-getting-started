@@ -3,6 +3,7 @@
 
 int main()
 {
+	static_assert(__cplusplus == 201103L, "C++11 supported.");
 	Trivial::Entity entity;
 
 	entity.SetName("Hello, GYP");

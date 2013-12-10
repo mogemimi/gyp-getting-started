@@ -16,6 +16,8 @@
 /build/Debug
 /build/Release
 /build/build
+/build/lib
+/build.xcodefiles
 /tools/gyp
 /tools/python
 

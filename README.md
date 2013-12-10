@@ -58,20 +58,19 @@ $ python setup.py install
 #### 1. Generate project
 
 ```
-$ gyp build/trivial.gyp --depth=. -f xcode -D target_arch=ia32
-$ gyp build/trivial.gyp --depth=. -f xcode -D target_arch=x64
+$ gyp build/trivial.gyp --depth=. -f xcode --generator-output=./build.xcodefiles/
 ```
 
-#### 2. Build (Release/Debug)
+#### 2. Build (Debug/Release)
 
 ```
-$ xcodebuild -project build/trivial.xcodeproj
+$ xcodebuild -project build.xcodefiles/build/trivial.xcodeproj
 ```
 
 To build in release mode, use -configuration option:
 
 ```
-$ xcodebuild -project build/trivial.xcodeproj -configuration Release
+$ xcodebuild -project build.xcodefiles/build/trivial.xcodeproj -configuration Release
 ```
 
 #### 3. Running test
