@@ -35,7 +35,7 @@ $ svn --version
 $ svn co http://gyp.googlecode.com/svn/trunk tools/gyp tools/gyp
 ```  
 
-Second, run setup.py:
+Second, run `setup.py`:
 
 **Linux and Mac OSX**
 
@@ -67,7 +67,7 @@ $ gyp build/trivial.gyp --depth=. -f xcode --generator-output=./build.xcodefiles
 $ xcodebuild -project build.xcodefiles/build/trivial.xcodeproj
 ```
 
-To build in release mode, use -configuration option:
+To build in release mode, use `-configuration` option:
 
 ```
 $ xcodebuild -project build.xcodefiles/build/trivial.xcodeproj -configuration Release
@@ -114,4 +114,23 @@ Release build:
 
 ```
 $ MSBuild.exe build\trivial.sln /p:Configuration=Release
+```
+
+## Notes
+If you get the following error, Python can't find `setuptools` module.
+```
+$ python setup.py install
+Traceback (most recent call last):
+  File "setup.py", line 7, in <module>
+    from setuptools import setup
+ImportError: No module named setuptools
+```
+
+You can install python modules:
+
+```
+$ curl -O http://peak.telecommunity.com/dist/ez_setup.py
+$ python ez_setup.py
+...
+$ python setup.py install
 ```
