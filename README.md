@@ -80,20 +80,27 @@ $ build/build/Release/TrivialTest
 Hello, GYP
 ```
 
-### Building under MSBuild (Visual Studio 2012)
+### Building under MSBuild (Visual Studio 2013)
 
 #### 1. Generate project files
 
-Generate visual studio project files: 
+Generate visual studio project files:
 
 ```
-$ python tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2012 -D target_arch=ia32
+$ tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2013
 ```
 
-Target architecture x64:
+or running with `gyp_main.py`:
 
 ```
-$ python tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2012 -D target_arch=x64
+$ python tools/gyp/gyp_main.py build/trivial.gyp --depth=. -f msvs -G msvs_version=2013
+```
+
+Using `-D target_arch` you can specify the target architecture:
+
+```
+$ tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2013 -D target_arch=ia32
+$ tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2013 -D target_arch=x64
 ```
 
 #### 2. Build
@@ -107,13 +114,16 @@ $ set Path=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%PATH%
 Debug build:  
 
 ```
-$ MSBuild.exe build\trivial.sln
+$ MSBuild.exe build\trivial.sln /t:Build /toolsversion:12.0
+                                /p:PlatformToolset=v120;TargetFrameworkVersion=v4.5.1
 ```
 
 Release build:  
 
 ```
-$ MSBuild.exe build\trivial.sln /p:Configuration=Release
+$ MSBuild.exe build\trivial.sln /t:Build /toolsversion:12.0
+                                /p:PlatformToolset=v120;TargetFrameworkVersion=v4.5.1
+                                /p:Configuration=Release
 ```
 
 ## Notes

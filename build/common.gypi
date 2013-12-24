@@ -3,7 +3,11 @@
 	'conditions': [
       ['OS == "mac"', {
         'target_arch%': 'x64',
-      }, {
+      }],
+      ['OS == "win"', {
+        'target_arch%': 'ia32',
+      }],
+	  ['OS != "mac" and OS != "win"', {
         'target_arch%': '<(target_arch)',
       }],
     ],
