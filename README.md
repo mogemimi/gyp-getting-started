@@ -8,32 +8,34 @@ For more information, see
 
 ## Getting the code
 
+```bash
+git clone git://github.com/enginetrouble/gyp-getting-started.git
 ```
-$ git clone git://github.com/enginetrouble/gyp-getting-started.git
-```
+
+## Requirements
+
+* Python 2.7+
+* Xcode 5
+* Visual Studio 2013
 
 ## How to build
-
-### Prerequisites
-
-* Python (version 2.x)
-* GYP
 
 ### Prerequisite: Installing GYP
 
 First, install GYP from https://chromium.googlesource.com/external/.  
-Make sure git is installed.
-From the root of your engine directory, run:  
-```
-$ git clone https://chromium.googlesource.com/external/gyp.git tools/gyp
+Make sure `git` is installed.
+From the root of your engine directory, run:
+
+```bash
+git clone https://chromium.googlesource.com/external/gyp.git tools/gyp
 ```
 
-or
+You can also use SVN instead of Git:
 
+```bash
+svn --version
+svn co http://gyp.googlecode.com/svn/trunk tools/gyp tools/gyp
 ```
-$ svn --version
-$ svn co http://gyp.googlecode.com/svn/trunk tools/gyp tools/gyp
-```  
 
 Second, run `setup.py`:
 
@@ -41,43 +43,42 @@ Second, run `setup.py`:
 
 To install globally with gyp:
 
-```
-$ cd tools/gyp
-$ [sudo] python setup.py install
+```bash
+cd tools/gyp
+[sudo] python setup.py install
 ```
 
 **Windows**
 
-```
-$ cd tools/gyp
-$ python setup.py install
+```bash
+cd tools/gyp
+python setup.py install
 ```
 
 ### Building under Xcode (Apple LLVM Clang++)
 
 #### 1. Generate project
 
-```
-$ gyp build/trivial.gyp --depth=. -f xcode --generator-output=./build.xcodefiles/
+```bash
+gyp build/trivial.gyp --depth=. -f xcode --generator-output=./build.xcodefiles/
 ```
 
 #### 2. Build (Debug/Release)
 
-```
-$ xcodebuild -project build.xcodefiles/build/trivial.xcodeproj
+```bash
+xcodebuild -project build.xcodefiles/build/trivial.xcodeproj
 ```
 
 To build in release mode, use `-configuration` option:
 
-```
-$ xcodebuild -project build.xcodefiles/build/trivial.xcodeproj -configuration Release
+```bash
+xcodebuild -project build.xcodefiles/build/trivial.xcodeproj -configuration Release
 ```
 
 #### 3. Running test
 
-```
-$ build/build/Release/TrivialTest 
-Hello, GYP
+```bash
+build/build/Release/TrivialTest
 ```
 
 ### Building under MSBuild (Visual Studio 2013)
@@ -86,49 +87,45 @@ Hello, GYP
 
 Generate visual studio project files:
 
-```
-$ tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2013
-```
-
-or running with `gyp_main.py`:
-
-```
-$ python tools/gyp/gyp_main.py build/trivial.gyp --depth=. -f msvs -G msvs_version=2013
+```bat
+tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2013
 ```
 
-Using `-D target_arch` you can specify the target architecture:
+If you don’t use command-prompt, an alternative method is `python gyp_main.py`:
 
-```
-$ tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2013 -D target_arch=ia32
-$ tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2013 -D target_arch=x64
+```bash
+python tools/gyp/gyp_main.py build/trivial.gyp --depth=. -f msvs -G msvs_version=2013
 ```
 
 #### 2. Build
 
 If you use the command-prompt:
 
-```
-$ set Path=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%PATH%
-```
-
-Debug build:  
-
-```
-$ MSBuild.exe build\trivial.sln /t:Build /toolsversion:12.0
-                                /p:PlatformToolset=v120;TargetFrameworkVersion=v4.5.1
+```bat
+set Path=C:\Program Files (x86)\MSBuild\12.0\Bin\;%PATH%
 ```
 
-Release build:  
+Debug build:
 
+```bat
+MSBuild build\trivial.sln /t:Build
 ```
-$ MSBuild.exe build\trivial.sln /t:Build /toolsversion:12.0
-                                /p:PlatformToolset=v120;TargetFrameworkVersion=v4.5.1
-                                /p:Configuration=Release
+
+Using `/p:Configuration` you can specify the build configuration:
+
+```bat
+MSBuild build\trivial.sln /t:Build /p:Configuration=Release
+```
+
+#### 3. Running test
+
+```bash
+build\Debug\TrivialTest
 ```
 
 ## Notes
 If you get the following error, Python can't find `setuptools` module.
-```
+```bash
 $ python setup.py install
 Traceback (most recent call last):
   File "setup.py", line 7, in <module>
@@ -138,9 +135,9 @@ ImportError: No module named setuptools
 
 You can install python modules:
 
-```
-$ curl -O http://peak.telecommunity.com/dist/ez_setup.py
-$ python ez_setup.py
+```bash
+curl -O http://peak.telecommunity.com/dist/ez_setup.py
+python ez_setup.py
 ...
-$ python setup.py install
+python setup.py install
 ```
