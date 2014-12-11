@@ -5,9 +5,9 @@
     ['LINK','/usr/bin/clang++'],
   ],
   'target_defaults': {
-    'msvs_settings': {
-      'VCCLCompilerTool': {
-        'WarningLevel': '4', # /W4
+    'msbuild_settings': {
+      'ClCompile': {
+        'WarningLevel': 'Level4', # /W4
       },
     },
     'xcode_settings': {

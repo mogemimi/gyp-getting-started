@@ -36,20 +36,23 @@
       'Debug': {
         'defines':['DEBUG=1'],
         'cflags': ['-g', '-O0'],
-        'msvs_settings': {
-          'VCCLCompilerTool': {
-            'Optimization': '0', # /Od
+        'msbuild_settings': {
+          'ClCompile': {
+            'Optimization': 'Disabled', # /Od
             'conditions': [
               ['OS == "win" and component == "shared_library"', {
-                'RuntimeLibrary': '3', # /MDd
+                'RuntimeLibrary': 'MultiThreadedDebugDLL', # /MDd
               }, {
-                'RuntimeLibrary': '1', # /MTd
+                'RuntimeLibrary': 'MultiThreadedDebug', # /MTd
               }],
             ],
           },
-          'VCLinkerTool': {
-            'LinkIncremental': '2',
+          'Link': {
+            #'LinkIncremental': 'true', # /INCREMENTAL
           },
+          #'': {
+          # 'LinkIncremental': 'true', # /INCREMENTAL
+          #},
         },
         'xcode_settings': {
           'GCC_OPTIMIZATION_LEVEL': '0', # -O0
@@ -57,22 +60,25 @@
       }, # Debug
       'Release': {
         'cflags': ['-O3'],
-        'msvs_settings':{
-          'VCCLCompilerTool': {
-            'Optimization': '2', # /O2
-            'InlineFunctionExpansion': '2',
+        'msbuild_settings':{
+          'ClCompile': {
+            'Optimization': 'MaxSpeed', # /O2
+            'InlineFunctionExpansion': 'AnySuitable', # /Ob2
             'conditions': [
               ['OS == "win" and component == "shared_library"', {
-                'RuntimeLibrary': '2', # /MD
+                'RuntimeLibrary': 'MultiThreadedDLL', # /MD
               }, {
-                'RuntimeLibrary': '0', # /MT
+                'RuntimeLibrary': 'MultiThreaded', # /MT
               }],
             ],
           },
-          'VCLinkerTool': {
-            'LinkIncremental': '1',
-            'OptimizeReferences': '2',
+          'Link': {
+            #'LinkIncremental': 'false', # /INCREMENTAL:NO
+            'OptimizeReferences': 'true', # /OPT:REF
           },
+          #'': {
+          # 'LinkIncremental': 'false', # /INCREMENTAL:NO
+          #},
         },
         'xcode_settings': {
           'GCC_OPTIMIZATION_LEVEL': '3', # -O3
