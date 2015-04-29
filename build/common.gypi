@@ -48,6 +48,7 @@
             ],
           },
           'Link': {
+            'GenerateDebugInformation': 'true', # /DEBUG
             #'LinkIncremental': 'true', # /INCREMENTAL
           },
           #'': {
