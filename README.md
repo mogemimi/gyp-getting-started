@@ -86,7 +86,13 @@ To generate visual studio project files in Windows default command prompt, run `
 tools\gyp\gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2013
 ```
 
-If you use Git Bash (MinGW) or Cygwin, an alternative method is `python gyp_main.py`:
+If you use Git Bash (MinGW) or Cygwin, an alternative method is `gyp/gyp` (shell script, not `.bat` file):
+
+```shell
+tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2013
+```
+
+You can also use the `python gyp_main.py` instead of `gyp` command:
 
 ```shell
 python tools/gyp/gyp_main.py build/trivial.gyp --depth=. -f msvs -G msvs_version=2013
