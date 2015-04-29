@@ -30,13 +30,6 @@ From the root of your engine directory, run:
 git clone https://chromium.googlesource.com/external/gyp.git tools/gyp
 ```
 
-You can also use SVN instead of Git:
-
-```bash
-svn --version
-svn co http://gyp.googlecode.com/svn/trunk tools/gyp tools/gyp
-```
-
 Second, run `setup.py`:
 
 **Linux and Mac OSX**
