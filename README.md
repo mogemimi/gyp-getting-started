@@ -1,21 +1,23 @@
 gyp-getting-started
 ===================
 
-For more information, see  
+For more information, see
 
-* [http://enginetrouble.net/2013/07/getting-started-with-gyp.html](http://enginetrouble.net/2013/07/getting-started-with-gyp.html)  
-* [http://enginetrouble.net/](http://enginetrouble.net/)  
+* [http://enginetrouble.net/2013/07/getting-started-with-gyp.html](http://enginetrouble.net/2013/07/getting-started-with-gyp.html)
+* [http://enginetrouble.net/](http://enginetrouble.net/)
+
+Feedback, issues and pull requests are always welcome, please see the [Github issues page](https://github.com/enginetrouble/gyp-getting-started/issues).
 
 ## Getting the code
 
-```bash
+```shell
 git clone git://github.com/enginetrouble/gyp-getting-started.git
 ```
 
 ## Requirements
 
-* Python 2.7+
-* Xcode 5
+* Python 2.7+ (:warning: GYP does not support Python 3, at the moment)
+* Xcode 5 and 6
 * Visual Studio 2013
 
 ## How to build
@@ -24,9 +26,9 @@ git clone git://github.com/enginetrouble/gyp-getting-started.git
 
 First, install GYP from https://chromium.googlesource.com/external/.  
 Make sure `git` is installed.
-From the root of your engine directory, run:
+From the root of your engine directory (`cd gyp-getting-started`), run:
 
-```bash
+```shell
 git clone https://chromium.googlesource.com/external/gyp.git tools/gyp
 ```
 
@@ -36,14 +38,14 @@ Second, run `setup.py`:
 
 To install globally with gyp:
 
-```bash
+```shell
 cd tools/gyp
 [sudo] python setup.py install
 ```
 
 **Windows**
 
-```bash
+```shell
 cd tools/gyp
 python setup.py install
 ```
@@ -52,53 +54,55 @@ python setup.py install
 
 #### 1. Generate project
 
-```bash
-gyp build/trivial.gyp --depth=. -f xcode --generator-output=./build.xcodefiles/
+```shell
+gyp build/trivial.gyp --depth=. -f xcode --generator-output=build.xcodefiles
 ```
 
 #### 2. Build (Debug/Release)
 
-```bash
+```shell
 xcodebuild -project build.xcodefiles/build/trivial.xcodeproj
 ```
 
 To build in release mode, use `-configuration` option:
 
-```bash
+```shell
 xcodebuild -project build.xcodefiles/build/trivial.xcodeproj -configuration Release
 ```
 
 #### 3. Running test
 
-```bash
+```shell
 build/build/Release/TrivialTest
 ```
 
-### Building under MSBuild (Visual Studio 2013)
+### Building under MSBuild
 
 #### 1. Generate project files
 
-Generate visual studio project files:
+To generate visual studio project files in Windows default command prompt, run `gyp\gyp` (same as `gyp\gyp.bat`):
 
 ```bat
-tools/gyp/gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2013
+tools\gyp\gyp build/trivial.gyp --depth=. -f msvs -G msvs_version=2013
 ```
 
-If you don’t use command-prompt, an alternative method is `python gyp_main.py`:
+If you use Git Bash (MinGW) or Cygwin, an alternative method is `python gyp_main.py`:
 
-```bash
+```shell
 python tools/gyp/gyp_main.py build/trivial.gyp --depth=. -f msvs -G msvs_version=2013
 ```
 
-#### 2. Build
+An Visual Studio solution file (`build/trivial.sln`) has been created in your directory.
 
-If you use the command-prompt:
+#### 2. Build using MSBuild
+
+If you use the Visual Studio 2013, run the following in a command prompt:
 
 ```bat
 set Path=C:\Program Files (x86)\MSBuild\12.0\Bin\;%PATH%
 ```
 
-Debug build:
+To compile and create an executable file, run the following command:
 
 ```bat
 MSBuild build\trivial.sln /t:Build
@@ -112,13 +116,15 @@ MSBuild build\trivial.sln /t:Build /p:Configuration=Release
 
 #### 3. Running test
 
-```bash
+```bat
 build\Debug\TrivialTest
 ```
 
 ## Notes
+
 If you get the following error, Python can't find `setuptools` module.
-```bash
+
+```shell
 $ python setup.py install
 Traceback (most recent call last):
   File "setup.py", line 7, in <module>
@@ -126,11 +132,11 @@ Traceback (most recent call last):
 ImportError: No module named setuptools
 ```
 
-You can install python modules:
+You can install python modules and try again:
 
-```bash
-curl -O http://peak.telecommunity.com/dist/ez_setup.py
-python ez_setup.py
-...
+```shell
+wget https://bootstrap.pypa.io/ez_setup.py -O - | python
 python setup.py install
 ```
+
+For more information about installing `setuptools`, please see https://pypi.python.org/pypi/setuptools#unix-wget.
