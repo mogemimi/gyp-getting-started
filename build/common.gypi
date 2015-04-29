@@ -1,20 +1,20 @@
 {
   'variables': {
-	'conditions': [
+    'conditions': [
       ['OS == "mac"', {
         'target_arch%': 'x64',
       }],
       ['OS == "win"', {
         'target_arch%': 'ia32',
       }],
-	  ['OS != "mac" and OS != "win"', {
+      ['OS != "mac" and OS != "win"', {
         'target_arch%': '<(target_arch)',
       }],
     ],
   },
   'target_defaults': {
     'default_configuration': 'Release',
-	'conditions': [
+    'conditions': [
       ['target_arch == "arm"', {
         # arm
       }], # target_archs == "arm"
