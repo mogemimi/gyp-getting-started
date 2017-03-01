@@ -24,7 +24,7 @@ git clone git://github.com/enginetrouble/gyp-getting-started.git
 
 ### Prerequisite: Installing GYP
 
-First, install GYP from https://chromium.googlesource.com/external/.  
+First, install GYP from https://chromium.googlesource.com/external/gyp.  
 Make sure `git` is installed.
 From the root of your engine directory (`cd gyp-getting-started`), run:
 
